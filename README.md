@@ -1,8 +1,8 @@
-📍 Enhanced Indian Pincode Lookup Web App <br>
-📝 Project Description
+📍 Enhanced Indian Pincode Lookup Web App <br><br>
+📝 Project Description <br>
 The Enhanced Indian Pincode Lookup Web App is a modern, user-friendly tool that allows users to search for detailed location information based on any valid 6-digit Indian pincode. It uses the official Postal Pincode API to fetch data in real time and offers a rich set of features to enhance usability, accessibility, and interaction.
-<br>
-🎯 Key Features
+<br> <br>
+🎯 Key Features <br>
 🔎 Pincode Search
 <br>
 Allows users to input a 6-digit Indian pincode and fetch detailed information about the associated post offices, district, and state.
@@ -40,7 +40,7 @@ Saves up to the last 10 unique searches in local storage for convenience.
 📱 Mobile Responsive Design
 <br>
 Fully responsive layout using flexible CSS — works seamlessly on desktops, tablets, and smartphones.
-<br>
+<br><br>
 🛠️ Technologies Used
 HTML5 – Markup and structure
 <br>
@@ -55,8 +55,8 @@ LocalStorage API – To persist search history
 Postal Pincode API – For fetching real-time postal data
 <br>
 Google Maps (via URL) – For map location linking
-<br>
-🚀 How It Works
+<br><br>
+🚀 How It Works <br>
 1-User enters or speaks a pincode.
 <br>
 2-Input is validated and submitted.
@@ -72,7 +72,7 @@ Google Maps (via URL) – For map location linking
     c).Option to reset and search again is displayed.
 <br>
 5-Each location includes a link to view on Google Maps.
-<br>
+<br><br>
 📂 Use Cases <br>
 1-Quick postal lookups for logistics or delivery services.
 <br>
@@ -81,7 +81,7 @@ Google Maps (via URL) – For map location linking
 3-Educational tool for understanding postal zones.
 <br>
 4-Utility for developers needing postal data validation.
-<br>
+<br><br>
 🔐 Privacy Considerations <br>
 1-No data is sent to third-party services except the official pincode API.
 <br>
