@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pincode Finder</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Main Container -->
+  <div class="container">
+    <h1>Pincode Finder</h1>
+    <input type="text" id="pincodeInput" placeholder="Enter Pincode" onkeydown="handleKey(event)" />
+    <button onclick="searchPincode()">Search</button>
+  </div>
+
+  <!-- Result Modal -->
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="resultContent"></div>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+<div id="loader" class="loader-overlay">
+  <div class="spinner"></div>
+</div>
+
+</body>
+</html>
