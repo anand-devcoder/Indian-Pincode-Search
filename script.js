@@ -1,12 +1,14 @@
 let pincodeData = [];
 
-function loadExcelData(callback) {
-  fetch('pincodes.xlsx')
-    .then(res => res.arrayBuffer())
+function loadPincodeData(callback) {
+  fetch('pincodes.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Failed to load pincodes.json');
+      return res.json();
+    })
     .then(data => {
-      const workbook = XLSX.read(data, { type: 'array' });
-      const sheet = workbook.Sheets[workbook.SheetNames[0]];
-      pincodeData = XLSX.utils.sheet_to_json(sheet, { defval: "" }).map(row => {
+      // Normalize keys to lowercase
+      pincodeData = data.map(row => {
         const normalized = {};
         for (const key in row) {
           normalized[key.toLowerCase()] = row[key];
@@ -15,7 +17,10 @@ function loadExcelData(callback) {
       });
       if (callback) callback();
     })
-    .catch(err => console.error("Failed to load Excel:", err));
+    .catch(err => {
+      console.error("Failed to load JSON:", err);
+      showModalMessage("⚠️ Failed to load pincode data.");
+    });
 }
 
 function handleKey(e) {
@@ -39,9 +44,8 @@ function searchPincode() {
     return;
   }
 
-  loader.style.display = 'flex'; // Show loader
+  loader.style.display = 'flex';
 
-  // Simulate delay for UX (e.g., 300ms)
   setTimeout(() => {
     matches = pincodeData.filter(item =>
       String(item.pincode).replace(/,/g, '').trim() === input
@@ -53,11 +57,10 @@ function searchPincode() {
       renderPage();
       modal.style.display = 'block';
       document.body.style.overflow = 'hidden';
-      inputField.value = ''; // Clear input
-      loader.style.display = 'none'; // Hide loader
+      inputField.value = '';
+      loader.style.display = 'none';
     } else {
       showModalMessage("❌ Invalid Pincode! Or Pincode Not Found.");
-      // loader will be hidden inside showModalMessage()
     }
   }, 300);
 }
@@ -128,16 +131,15 @@ function scrollToTop() {
 
 function closeModal() {
   document.getElementById('resultModal').style.display = 'none';
-  document.body.style.overflow = 'auto';
+  document.body.style.overflow = 'hidden';
 }
 
-// ✅ Show message inside modal and hide loader
 function showModalMessage(message) {
   const modal = document.getElementById('resultModal');
   const content = document.getElementById('resultContent');
   const loader = document.getElementById('loader');
 
-  loader.style.display = 'none'; // ✅ Hide loader on error
+  loader.style.display = 'none';
 
   content.innerHTML = `
     <div style="text-align: center; padding: 30px 20px;">
@@ -149,12 +151,10 @@ function showModalMessage(message) {
   document.body.style.overflow = 'hidden';
 }
 
-// Load Excel on page load
 window.onload = () => {
-  loadExcelData();
+  loadPincodeData();
 };
 
-// Keyboard navigation in modal
 document.addEventListener('keydown', function (e) {
   const modal = document.getElementById('resultModal');
   const modalContent = document.querySelector('.modal-content');
@@ -167,10 +167,7 @@ document.addEventListener('keydown', function (e) {
       modalContent.scrollBy({ top: -50, behavior: 'smooth' });
     }
   }
-});
 
-// Close modal with Escape key
-document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     closeModal();
   }
