@@ -8,7 +8,7 @@
 /* Use real image as background */
 body {
   font-family: Arial, sans-serif;
-  background: url('banner_image_for_pincode_finder_projects.jpg') no-repeat center center fixed;
+  background: url('background.jpg') no-repeat center center fixed;
   background-size: cover;
   overflow: hidden; /* only hide horizontal scroll */
   min-height: 100vh;
@@ -267,5 +267,6 @@ nav ul li a:hover {
   table-layout: fixed;
   word-wrap: break-word;
 }
+
 
 
