@@ -8,12 +8,13 @@
 /* Use real image as background */
 body {
   font-family: Arial, sans-serif;
-  background: url('banner\ image\ for\ pincode\ finder\ project.jpg') no-repeat center center fixed;
+  background: url('banner image for pincode finder projects.jpg') no-repeat center center fixed;
   background-size: cover;
-  overflow: hidden;
+  overflow: hidden; /* only hide horizontal scroll */
   min-height: 100vh;
   color: white;
 }
+
 
 /* Transparent Nav Bar */
 nav {
@@ -238,56 +239,6 @@ nav ul li a:hover {
   100% { transform: rotate(360deg); }
 }
 
-
-/* Optional: Keep this off if you're not using mobile view fix */
-/*
-@media (max-width: 600px) {
-  ...
-}
-*/
-
-/* Responsive for Mobile */
-/* @media (max-width: 600px) {
-  #resultContent table,
-  #resultContent thead,
-  #resultContent tbody,
-  #resultContent th,
-  #resultContent td,
-  #resultContent tr {
-    display: block;
-    width: 100%;
-  }
-
-  #resultContent thead {
-    display: none;
-  }
-
-  #resultContent tr {
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    background: #f9f9f9;
-    border-radius: 5px;
-  }
-
-  #resultContent td {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 10px;
-    border: none;
-    border-bottom: 1px solid #ddd;
-  }
-
-  #resultContent td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    flex: 1;
-    margin-right: 10px;
-    text-transform: capitalize;
-  }
-} */
-
-
 @media (max-width: 600px) {
  .container {
   margin-top: 350px;
@@ -296,4 +247,23 @@ nav ul li a:hover {
   margin-top: 130px;
 }
 
+}
+
+@media (max-width: 300px) {
+ .container {
+  margin-top: 250px;
+}
+.modal-content {
+  margin-top: 100px;
+}
+
+}
+
+#resultContent {
+  overflow-x: auto;
+}
+
+#resultContent table {
+  table-layout: fixed;
+  word-wrap: break-word;
 }
