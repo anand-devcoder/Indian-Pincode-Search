@@ -241,10 +241,10 @@ nav ul li a:hover {
 
 @media (max-width: 600px) {
  .container {
-  margin-top: 350px;
+  margin-top: 310px;
 }
 .modal-content {
-  margin-top: 130px;
+  margin-top: 100px;
 }
 
 }
@@ -267,6 +267,7 @@ nav ul li a:hover {
   table-layout: fixed;
   word-wrap: break-word;
 }
+
 
 
 
